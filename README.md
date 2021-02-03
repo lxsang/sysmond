@@ -175,7 +175,7 @@ Note:
 * Temperature in is: Celsius\*1000
 * Memory in KB
 * Disk is in: bytes
-* Network rate Kb/s
+* Network rate bytes/s
 * CPU usages is in %, the first value in the list is the average CPU usages, second value is for cpu0, third value is for cpu1 and so on.
 
 ## Example configuration on Raspberry Pi
