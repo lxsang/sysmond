@@ -82,7 +82,7 @@ powering off the system when the batery percent bellow the configured value.
 
 ### CPU, memory and storage usage configuration
 
-```sh
+```ini
 # number of cpu cores to monitor, this value shoud be equal or less than the actual number of CPU cores in the system
 # CPU informations are fetched from /proc/stat
 cpu_core_number = 4
@@ -95,7 +95,7 @@ disk_mount_point = /
 
 ### Temperature configuration
 
-```sh
+```ini
 # System temperature informations can be found in /sys/devices/virtual/thermal/*
 # CPU temperature
 cpu_temperature_input=/sys/devices/virtual/thermal/thermal_zone1/temp
@@ -106,14 +106,14 @@ gpu_temperature_input=/sys/devices/virtual/thermal/thermal_zone2/temp
 
 ### Network monitoring configuration
 
-```sh
+```ini
 # List of network interface to monitor
 network_interfaces = wlan0,eth0
 ```
 
 ### Other configurations
 
-```sh
+```ini
 # Sampling period in ms, example: 2Hz (2 samples per second) should be
 sample_period = 500
 
