@@ -1,0 +1,11 @@
+[Unit]
+Description=System monitor
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/sysmond
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
