@@ -1,7 +1,10 @@
-# System monitoring
+# Linux System monitoring
 
 A simple service that monitors and collects information on system resource such as battery, temperature, memory, CPU, and network usage.
 The service can be used as backend for applications that need to consult system status.
+
+![https://doc.iohub.dev/jarvis/asset//c_2/s_5/jarvis_monitoring.png](https://doc.iohub.dev/jarvis/asset//c_2/s_5/jarvis_monitoring.png)
+*Example of web application that fetches data from `sysmond` and visualize it as real-time graphs*
 
 `Sysmond` monitors resource available on the system via the user space **sysfs interface**.
 
@@ -11,7 +14,7 @@ The service logs all system information to application using a classic file-base
 * STDOUT
 * UNIX socket domain, as with name pipe, the socket file must be previously created by application
 
-Additionally, if configured correctly, the service can monitor the system battery and automatically shutdown the system when the battery is below a configured threshold.
+Additionally, if configured correctly, the service can **monitor the system battery and automatically shutdown the system** when the battery is below a configured threshold.
 
 `sysmond` is lightweight and can be used in embedded linux system, or single board computer such as Raspberry Pi or Jetson Nano.
 
