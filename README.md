@@ -17,7 +17,7 @@ The service logs all system information to application using a classic file-base
 
 Additionally, if configured correctly, the service can **monitor the system battery and automatically shutdown the system** when the battery is below a configured threshold.
 
-`sysmond` is lightweight and can be used in embedded linux system, or single board computer such as Raspberry Pi or Jetson Nano.
+`sysmond` is lighweight and can be used in embedded linux system, or single board computer such as Raspberry Pi or Jetson Nano.
 
 ## Build and install
 The build process is done using autotool
