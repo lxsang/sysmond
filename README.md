@@ -23,6 +23,7 @@ libtoolize
 aclocal
 autoconf
 automake --add-missing
+./configure
 # build
 make
 #install
