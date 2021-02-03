@@ -4,6 +4,7 @@ A simple service that monitors and collects information on system resource such 
 The service can be used as backend for applications that need to consult system status.
 
 ![https://doc.iohub.dev/jarvis/asset//c_2/s_5/jarvis_monitoring.png](https://doc.iohub.dev/jarvis/asset//c_2/s_5/jarvis_monitoring.png)
+
 *Example of web application that fetches data from `sysmond` and visualize it as real-time graphs*
 
 `Sysmond` monitors resource available on the system via the user space **sysfs interface**.
