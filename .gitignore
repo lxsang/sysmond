@@ -1,49 +1,73 @@
-# http://www.gnu.org/software/automake
+# Prerequisites
+plugins
+build
+*._*
+*.d
+*.deb
+.vscode
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
 
-Makefile.in
-/ar-lib
-/mdate-sh
-/py-compile
-/test-driver
-/ylwrap
+# Linker output
+*.ilk
+*.map
+*.exp
 
-# http://www.gnu.org/software/autoconf
+# Precompiled Headers
+*.gch
+*.pch
 
-autom4te.cache
-/autoscan.log
-/autoscan-*.log
-/aclocal.m4
-/compile
-/config.guess
-/config.h.in
-/config.log
-/config.status
-/config.sub
-/configure
-/configure.scan
-/depcomp
-/install-sh
-/missing
-/stamp-h1
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
 
-# https://www.gnu.org/software/libtool/
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
 
-/ltmain.sh
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
 
-# http://www.gnu.org/software/texinfo
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
 
-/texinfo.tex
-
-# http://www.gnu.org/software/m4/
-
-m4/libtool.m4
-m4/ltoptions.m4
-m4/ltsugar.m4
-m4/ltversion.m4
-m4/lt~obsolete.m4
-
-# Generated Makefile 
-# (meta build system like autotools, 
-# can automatically generate from config.status script
-# (which is called by configure script))
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+modules.order
+Module.symvers
+Makefile.old
+dkms.con
+.DS_Store
+.*
+*.cache
 Makefile
+antd
+compile
+config.guess
+depcomp
+install-sh
+missing
+libtool
+config.log
+config.status
+config.sub
+configure
+aclocal.m4
+ltmain.sh
+Makefile.in
