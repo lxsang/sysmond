@@ -609,7 +609,7 @@ static int ini_handle(void *user_data, const char *section, const char *name, co
     {
         opts->bat_stat.min_voltage = atoi(value);
     }
-    else if (EQU(name, "battery_cutoff_votalge"))
+    else if (EQU(name, "battery_cutoff_voltage"))
     {
         opts->bat_stat.cutoff_voltage = atoi(value);
     }
