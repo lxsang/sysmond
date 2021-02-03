@@ -177,3 +177,46 @@ Note:
 * Disk is in: bytes
 * Network rate Kb/s
 * CPU usages is in %, the first value in the list is the average CPU usages, second value is for cpu0, third value is for cpu1 and so on.
+
+## Example configuration on Raspberry Pi
+
+Recently i've used the Raspberry Pi 4 as my home server, `sysmond` is used to monitor the resource on this server, below is an example configuration:
+
+```ini
+# Battery monitoring is disabled
+battery_max_voltage = 12600
+battery_min_voltage = 10000
+battery_cutoff_voltage = 9000
+battery_divide_ratio = 3.36
+# battery_input =
+
+# daemon configuration
+# time period between loop step in ms
+sample_period = 500
+
+#number of cpus to monitor
+cpu_core_number = 4
+
+# network interfaces to monitor
+network_interfaces = eth0 
+# e.g. wlan0,eth0
+
+# disk mount point to monitor
+disk_mount_point = /opt/cloud
+
+# when battery is low
+# the system will be shutdown after n count down
+power_off_count_down = 10
+# the system will bet shutdown if the battery voltage percent is below this value
+power_off_percent = 3
+
+cpu_temperature_input=/sys/devices/virtual/thermal/thermal_zone0/temp
+
+#gpu_temperature_input=/sys/devices/virtual/thermal/thermal_zone2/temp
+
+# output system info to file 
+data_file_out = /var/fbf070ddea3ea90d07f456540b405d302554ec82
+```
+
+Since the raspberry is powered using "wall" power, and there is no ADC sensor available, the battery monitoring feature is disabled.
+The service is output to a name pipe that is used by another application for visualization.
