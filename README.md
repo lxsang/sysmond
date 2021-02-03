@@ -3,7 +3,7 @@
 A simple service that monitors and collects information on system resource such as battery, temperature, memory, CPU, and network usage.
 The service can be used as backend for applications that need to consult system status.
 
-`Sysmond` monitor ressource available on the system via the user space **sysfs interface**.
+`Sysmond` monitors resource available on the system via the user space **sysfs interface**.
 
 The service logs all system information to application using a classic file-based interface, it can be configured to log system information to:
 * Regular text file (such as log file)
@@ -11,7 +11,9 @@ The service logs all system information to application using a classic file-base
 * STDOUT
 * UNIX socket domain, as with name pipe, the socket file must be previously created by application
 
-Additionally, if configured correctly, the service can monitor the system battery and automatically shutdown the system when the battery is below a configured threshold
+Additionally, if configured correctly, the service can monitor the system battery and automatically shutdown the system when the battery is below a configured threshold.
+
+`sysmond` is lightweight and can be used in embedded linux system, or single board computer such as Raspberry Pi or Jetson Nano.
 
 ## Build and install
 The build process is done using autotool
@@ -39,9 +41,9 @@ sysmond -f /path/to/your/sysmond.conf
 
 The battery monitoring feature is helpful for battery-powered systems such as robotic systems.
 On these systems, battery voltage reading is performed with the help of an ADC sensor (such as ADS1115).
-As the service communicate with the system hardware via the **sysfs interface**, in order to provide input
-to `sysmond`, these ADCs sensor should accessible in user space via this interface. Usually, this is handled
-by the device dirver.
+As the service communicates with the system hardware via the **sysfs interface**, in order to provide input
+to `sysmond`, these ADCs sensor should be accessible in user space via this interface. Usually, this is handled
+by the device driver.
 
 For example, an `ADS1115` linux driver will expose its ADC channel inputs in user space at
 `/sys/class/hwmon/hwmon0/device/*`, if the battery is connected to the chanel 3 of the ADC sensor,
@@ -52,19 +54,19 @@ cat sys/class/hwmon/hwmon0/device/in3_input
 # value in mV, example 4.1V
 4120 
 ```
-This kind of file need to be passed to `sysmond` configuration. The following configuration availabe
+This kind of file need to be passed to `sysmond` configuration. The following configurations are availabe
 
 ```ini
 # Max usable battery voltage
 battery_max_voltage = 12600
 
-# Min usable battery votage
+# Min usable battery voltage
 battery_min_voltage = 10000
 
 # Below this voltage, the battery is unusable and is damaged
-battery_cutoff_votalge = 9000
+battery_cutoff_voltage = 9000
 
-# if voltage divider is used, the R1+R2/ R2 ratio shoud be set to `battery_divide_ratio`, otherwise `1.0`
+# if voltage divider is used, the R1+R2/ R2 ratio should be set to `battery_divide_ratio`, otherwise `1.0`
 battery_divide_ratio = 3.36
 
 # Battery input file. If this configuration is empty, the battery monitoring feature is disabled
@@ -73,21 +75,21 @@ battery_input = /sys/class/hwmon/hwmon2/device/in3_input
 # When battery is low the system will be shutdown after n count down
 power_off_count_down = 10
 
-# the system will bet shutdown if the battery voltage percent is below this value after `power_off_count_down` times
+# the system will be shutdown if the battery voltage percent is below this value after `power_off_count_down` times
 power_off_percent = 3
 ```
 
-Based on these configuration, `sysmond` can approximate the battery volage percent, it is also able to protect the battery by
-powering off the system when the batery percent bellow the configured value.
+Based on these configuration, `sysmond` can approximate the battery voltage percent, it is also able to protect the battery by
+powering off the system when the battery percent bellow the configured value.
 
 ### CPU, memory and storage usage configuration
 
 ```ini
-# number of cpu cores to monitor, this value shoud be equal or less than the actual number of CPU cores in the system
-# CPU informations are fetched from /proc/stat
+# number of cpu cores to monitor, this value should be equal or less than the actual number of CPU cores in the system
+# CPU usages are fetched from /proc/stat
 cpu_core_number = 4
 
-# memory informations are automatically fetch from /proc/meminfo, no configuration needed
+# memory usages are automatically fetch from /proc/meminfo, no configuration needed
 
 # The mount point of the storage should be monitored
 disk_mount_point = /
@@ -96,7 +98,7 @@ disk_mount_point = /
 ### Temperature configuration
 
 ```ini
-# System temperature informations can be found in /sys/devices/virtual/thermal/*
+# System temperature information can be found in /sys/devices/virtual/thermal/*
 # CPU temperature
 cpu_temperature_input=/sys/devices/virtual/thermal/thermal_zone1/temp
 
@@ -131,7 +133,7 @@ data_file_out = /var/sysmond.log
 ```
 
 ## Output data format
-System informations are outputed in JSON format, example:
+System information is outputted in JSON format, example:
 
 ```json
 {
@@ -169,4 +171,3 @@ Note:
 * Memory in KB
 * Disk is in: bytes
 * Network rate Kb/s
-
