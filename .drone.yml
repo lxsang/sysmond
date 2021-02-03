@@ -1,0 +1,29 @@
+---
+kind: pipeline
+type: exec
+name: default
+platform:
+  os: linux
+  arch: arm64
+clone:
+  disable: true
+steps:
+- name: clone
+  commands:
+  - pwd
+  - git clone git@iohub.dev:lxsang/sysmond.git
+  - cd ./sysmond && git checkout master
+- name: build
+  commands:
+  - cd ./sysmond
+  - libtoolize
+  - aclocal
+  - autoconf
+  - automake --add-missing
+  - ./configure --prefix=/usr
+  - make
+  - install -m 755 sysmond /usr/bin/sysmond
+  - systemctl restart sysmond
+trigger:
+  branch:
+  - master
