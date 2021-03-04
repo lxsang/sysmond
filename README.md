@@ -1,4 +1,4 @@
-# Linux System monitoring
+# Linux System resource monitoring service
 
 A simple service that monitors and collects information on system resource such as battery, temperature, memory, CPU, and network usage.
 The service can be used as backend for applications that need to consult system status.
