@@ -4,14 +4,14 @@ type: exec
 name: default
 platform:
   os: linux
-  arch: arm64
+  arch: amd64
 clone:
   disable: true
 steps:
 - name: clone
   commands:
   - pwd
-  - git clone git@iohub.dev:lxsang/sysmond.git
+  - git clone ssh://git@iohub.dev:2222/lxsang/sysmond.git
   - cd ./sysmond && git checkout master
 - name: build
   commands:
@@ -20,10 +20,9 @@ steps:
   - aclocal
   - autoconf
   - automake --add-missing
-  - ./configure --prefix=/usr
+  - ./configure --prefix=/opt/cloud/artifacts/
   - make
-  - install -m 755 sysmond /usr/bin/sysmond
-  - systemctl restart sysmond
+  - make install
 trigger:
   branch:
   - master
