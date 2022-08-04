@@ -9,6 +9,6 @@ sysmond_SOURCES = ini.c sysmon.c
 
 sysconf_DATA = sysmond.conf
 install-data-local:
-	- [ -d /etc/systemd/system/ ] && cp sysmond.service /etc/systemd/system/
+     ([ -d $(DESTDIR)/etc/systemd/system/ ] && cp sysmond.service $(DESTDIR)/etc/systemd/system/) || true
 
 EXTRA_DIST = ini.h sysmond.conf sysmond.service
