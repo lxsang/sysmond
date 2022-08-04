@@ -3,7 +3,7 @@ def do_build()
   sh '''
   set -e
   cd $WORKSPACE
-  mkdir -p build/$arch
+  mkdir -p build/$arch/etc/systemd/system/
   [ -f Makefile ] && make clean
   libtoolize
   aclocal
