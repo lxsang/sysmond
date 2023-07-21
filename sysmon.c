@@ -87,8 +87,8 @@ typedef struct
 {
     char cpu_temp_file[MAX_BUF];
     char gpu_temp_file[MAX_BUF];
-    uint16_t cpu;
-    uint16_t gpu;
+    uint32_t cpu;
+    uint32_t gpu;
 } sys_temp_t;
 
 typedef struct
@@ -377,7 +377,7 @@ static int read_mem_info(app_data_t *opts)
     return 0;
 }
 
-static int read_temp_file(const char *file, uint16_t *output)
+static int read_temp_file(const char *file, uint32_t *output)
 {
     int fd, ret;
     if (file[0] != '\0')
@@ -396,7 +396,7 @@ static int read_temp_file(const char *file, uint16_t *output)
             (void)close(fd);
             return -1;
         }
-        *output = (uint16_t)atoi(buf);
+        *output = (uint32_t)atoi(buf);
         (void)close(fd);
     }
     return 0;
