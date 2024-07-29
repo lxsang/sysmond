@@ -1,0 +1,17 @@
+name: Autotools pipeline
+run-name: Building multi-platform autotools project
+on: [push]
+
+jobs:
+  build-amd64:
+    uses: dany/actions/.gitea/workflows/autotools-cross.yml@master
+    with:
+      platform: amd64
+  build-arm64:
+    uses: dany/actions/.gitea/workflows/autotools-cross.yml@master
+    with:
+      platform: arm64
+  build-arm:
+    uses: dany/actions/.gitea/workflows/autotools-cross.yml@master
+    with:
+      platform: arm
